@@ -7,6 +7,8 @@ import {
   PersonalInfoIcon,
   ProjectLogo,
   Breadcrumb,
+  CustomArrow,
+  FolderIcon,
 } from "@promaidev00/common-libraries";
 
 const Test = () => {
@@ -91,29 +93,33 @@ const Test = () => {
           <Box>
             <Typography variant="h3">Breadcrumb</Typography>
           </Box>
-          <Breadcrumb
-            data={{
-              name: "Surgical Arm",
-              sheets: [
-                {
-                  id: 1,
-                  catalogNumber: "Main IPCI 12345678901211",
-                  image: "",
-                },
-                {
-                  id: 2,
-                  catalogNumber: "Surgical Arm dg1i",
-                  image: "",
-                },
-                {
-                  id: 3,
-                  catalogNumber: "MAZOR_RAMI, MZA_889380323820",
-                  image: "",
-                },
-              ],
-            }}
-            loading={false}
-          />
+          <Stack direction="row" gap={1}>
+            <Breadcrumb
+              data={{
+                name: "Surgical Arm",
+                sheets: [
+                  {
+                    id: 1,
+                    catalogNumber: "Main IPCI 12345678901211",
+                    image: "",
+                  },
+                  {
+                    id: 2,
+                    catalogNumber: "Surgical Arm dg1i",
+                    image: "",
+                  },
+                  {
+                    id: 3,
+                    catalogNumber: "MAZOR_RAMI, MZA_889380323820",
+                    image: "",
+                  },
+                ],
+              }}
+              loading={false}
+            />
+            <FolderIcon />
+            <CustomArrow />
+          </Stack>
         </Stack>
       </Stack>
     </Box>
