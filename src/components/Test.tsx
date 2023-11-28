@@ -10,6 +10,9 @@ import {
   CustomArrow,
   FolderIcon,
 } from "@promaidev00/common-libraries";
+import mainImg from "../assets/Noga-Fos.png";
+import roboticArm from "../assets/robotic_arm.png";
+import roboticLeg from "../assets/leg.jpg";
 
 const Test = () => {
   const MenuItemList = [
@@ -31,6 +34,10 @@ const Test = () => {
 
   const handleSelected = (e: any) => {
     console.log("Handle selected menu item:", e);
+  };
+
+  const handleItemClick = (e: any) => {
+    console.log("BreadCrumb:", e);
   };
 
   return (
@@ -101,21 +108,22 @@ const Test = () => {
                   {
                     id: 1,
                     catalogNumber: "Main IPCI 12345678901211",
-                    image: "",
+                    image: mainImg,
                   },
                   {
                     id: 2,
                     catalogNumber: "Surgical Arm dg1i",
-                    image: "",
+                    image: roboticArm,
                   },
                   {
                     id: 3,
                     catalogNumber: "MAZOR_RAMI, MZA_889380323820",
-                    image: "",
+                    image: roboticLeg,
                   },
                 ],
               }}
               loading={false}
+              handleClick={handleItemClick}
             />
             <FolderIcon />
             <CustomArrow />
