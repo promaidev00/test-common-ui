@@ -109,16 +109,28 @@ const Test = () => {
                     id: 1,
                     catalogNumber: "Main IPCI 12345678901211",
                     image: mainImg,
+                    infoObj: {
+                      route: "/sheet-1",
+                      target: "view",
+                    },
                   },
                   {
                     id: 2,
                     catalogNumber: "Surgical Arm dg1i",
                     image: roboticArm,
+                    infoObj: {
+                      route: "/sheet-2",
+                      target: "view",
+                    },
                   },
                   {
                     id: 3,
                     catalogNumber: "MAZOR_RAMI, MZA_889380323820",
                     image: roboticLeg,
+                    infoObj: {
+                      route: "/sheet-2",
+                      target: "trigger",
+                    },
                   },
                 ],
               }}
