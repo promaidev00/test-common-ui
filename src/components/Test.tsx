@@ -7,14 +7,46 @@ import {
   PersonalInfoIcon,
   ProjectLogo,
   Breadcrumb,
-  CustomArrow,
-  FolderIcon,
+  Button,
 } from "@promaidev00/common-libraries";
 import mainImg from "../assets/Noga-Fos.png";
 import roboticArm from "../assets/robotic_arm.png";
 import roboticLeg from "../assets/leg.jpg";
+import { useState } from "react";
 
 const Test = () => {
+  const defaultList = [
+    {
+      id: 1,
+      catalogNumber: "Main IPCI 12345678901211",
+      image: mainImg,
+      infoObj: {
+        route: "/sheet-1",
+        target: "view",
+      },
+    },
+    {
+      id: 2,
+      catalogNumber: "Surgical Arm dg1i",
+      image: roboticArm,
+      infoObj: {
+        route: "/sheet-2",
+        target: "view",
+      },
+    },
+    {
+      id: 3,
+      catalogNumber: "MAZOR_RAMI, MZA_889380323820",
+      image: roboticLeg,
+      infoObj: {
+        route: "/sheet-2",
+        target: "trigger",
+      },
+    },
+  ];
+
+  const [sheets, setSheets] = useState(defaultList);
+
   const MenuItemList = [
     {
       id: "personal_information",
@@ -38,6 +70,38 @@ const Test = () => {
 
   const handleItemClick = (e: any) => {
     console.log("BreadCrumb:", e);
+  };
+
+  const resetSheets = () => {
+    setSheets([
+      {
+        id: 1,
+        catalogNumber: "Main IPCI 12345678901211",
+        image: mainImg,
+        infoObj: {
+          route: "/sheet-1",
+          target: "view",
+        },
+      },
+      {
+        id: 2,
+        catalogNumber: "Surgical Arm dg1i",
+        image: roboticArm,
+        infoObj: {
+          route: "/sheet-2",
+          target: "view",
+        },
+      },
+      {
+        id: 3,
+        catalogNumber: "MAZOR_RAMI, MZA_889380323820",
+        image: roboticLeg,
+        infoObj: {
+          route: "/sheet-2",
+          target: "trigger",
+        },
+      },
+    ]);
   };
 
   return (
@@ -100,45 +164,24 @@ const Test = () => {
           <Box>
             <Typography variant="h3">Breadcrumb</Typography>
           </Box>
-          <Stack direction="row" gap={1}>
-            <Breadcrumb
-              data={{
-                name: "Surgical Arm",
-                sheets: [
-                  {
-                    id: 1,
-                    catalogNumber: "Main IPCI 12345678901211",
-                    image: mainImg,
-                    infoObj: {
-                      route: "/sheet-1",
-                      target: "view",
-                    },
-                  },
-                  {
-                    id: 2,
-                    catalogNumber: "Surgical Arm dg1i",
-                    image: roboticArm,
-                    infoObj: {
-                      route: "/sheet-2",
-                      target: "view",
-                    },
-                  },
-                  {
-                    id: 3,
-                    catalogNumber: "MAZOR_RAMI, MZA_889380323820",
-                    image: roboticLeg,
-                    infoObj: {
-                      route: "/sheet-2",
-                      target: "trigger",
-                    },
-                  },
-                ],
-              }}
-              loading={false}
-              handleClick={handleItemClick}
-            />
-            <FolderIcon />
-            <CustomArrow />
+          <Stack direction="row" justifyContent={"space-between"} gap={1}>
+            <Stack direction={"row"}>
+              <Breadcrumb
+                data={{
+                  name: "Surgical Arm",
+                  sheets: sheets,
+                }}
+                loading={false}
+                handleClick={handleItemClick}
+              />
+              <Button
+                variant="contained"
+                style={{ width: "250px", padding: "0" }}
+                onClick={() => resetSheets()}
+              >
+                Reset Breadcrumb
+              </Button>
+            </Stack>
           </Stack>
         </Stack>
       </Stack>
